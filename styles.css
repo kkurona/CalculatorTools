@@ -1,12 +1,31 @@
-*, ::before, ::after {
+/* base css reset to normalize box sizing, margins, form inheritance, media, and tables */
+*,
+::before,
+::after {
   box-sizing: border-box;
   border-width: 0;
   border-style: solid;
 }
-html, body, h1, h2, h3, p, figure, blockquote, ul, ol, dl, dd {
+
+html,
+body,
+h1,
+h2,
+h3,
+p,
+figure,
+blockquote,
+ul,
+ol,
+dl,
+dd {
   margin: 0;
 }
-button, input, select, textarea {
+
+button,
+input,
+select,
+textarea {
   font-family: inherit;
   font-size: 100%;
   font-weight: inherit;
@@ -15,17 +34,20 @@ button, input, select, textarea {
   margin: 0;
   padding: 0;
 }
-img, svg {
+
+img,
+svg {
   display: block;
   max-width: 100%;
 }
+
 table {
   text-indent: 0;
   border-color: inherit;
   border-collapse: collapse;
 }
 
-
+/* custom font definitions for arimo bold and regular weights */
 @font-face {
   font-family: "Arimo:Bold";
   src: url("https://static.figma.com/font/Arimo_wght__1") format("woff2");
@@ -40,50 +62,52 @@ table {
   font-weight: 400;
 }
 
+/* light mode design tokens defining page backgrounds, surfaces, text, accents, and borders */
+:root {
+  color: #00103b;
+  background: #f7f9fd;
+  font-family: "Arimo:Regular", Arial, sans-serif;
+  font-synthesis: none;
+  --page: #f7f9fd;
+  --workspace: #f8f9fd;
+  --surface: #ffffff;
+  --surface-soft: #eef2ff;
+  --surface-row: #f8f9fd;
+  --text: #00103b;
+  --muted: #526587;
+  --primary: #1433a6;
+  --button: #1433a6;
+  --border: #dde3ef;
+  --frame-border: #d2daea;
+  --nav-start: #f8fafd;
+  --nav-end: #d8dcea;
+}
 
-  :root {
-    color: #00103b;
-    background: #f7f9fd;
-    font-family: "Arimo:Regular", Arial, sans-serif;
-    font-synthesis: none;
-    --page: #f7f9fd;
-    --workspace: #f8f9fd;
-    --surface: #ffffff;
-    --surface-soft: #eef2ff;
-    --surface-row: #f8f9fd;
-    --text: #00103b;
-    --muted: #526587;
-    --primary: #1433a6;
-    --button: #1433a6;
-    --border: #dde3ef;
-    --frame-border: #d2daea;
-    --nav-start: #f8fafd;
-    --nav-end: #d8dcea;
-  }
+/* dark mode color overrides applied when data-theme="dark" is set on the root element */
+:root[data-theme="dark"] {
+  color: #edf2ff;
+  background: #101625;
+  --page: #101625;
+  --workspace: #141d2e;
+  --surface: #1a2438;
+  --surface-soft: #23304b;
+  --surface-row: #141d2e;
+  --text: #edf2ff;
+  --muted: #afbedb;
+  --primary: #a4b8ff;
+  --button: #4864df;
+  --border: #35435d;
+  --frame-border: #35435d;
+  --nav-start: #1a2438;
+  --nav-end: #101827;
+}
 
-  :root[data-theme="dark"] {
-    color: #edf2ff;
-    background: #101625;
-    --page: #101625;
-    --workspace: #141d2e;
-    --surface: #1a2438;
-    --surface-soft: #23304b;
-    --surface-row: #141d2e;
-    --text: #edf2ff;
-    --muted: #afbedb;
-    --primary: #a4b8ff;
-    --button: #4864df;
-    --border: #35435d;
-    --frame-border: #35435d;
-    --nav-start: #1a2438;
-    --nav-end: #101827;
-  }
-
+/* base document body layout and custom scrollbar colors */
 body {
-    min-width: 320px;
-    min-height: 100vh;
-    background: var(--page);
-  }
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--page);
+}
 
 button,
 input {
@@ -94,11 +118,13 @@ input {
   scrollbar-color: var(--muted) var(--workspace);
 }
 
+/* full-height application shell */
 .app-frame {
   min-height: 100vh;
   background: var(--page);
 }
 
+/* top browser-style chrome bar with vertical gradient background */
 .top-navigation {
   position: relative;
   height: 73px;
@@ -106,57 +132,79 @@ input {
   background: linear-gradient(180deg, var(--nav-start), var(--nav-end));
 }
 
+/* horizontal container for folder-shaped navigation tabs */
 .assignment-tabs {
   position: absolute;
   left: 18px;
   top: 7px;
   display: flex;
-  width: min(748px, calc(100% - 470px));
+  gap: 8px;
+  width: min(760px, calc(100% - 470px));
 }
 
+/* individual rounded folder tab styling and hover transitions */
 .assignment-tab {
   position: relative;
-  width: 187px;
+  width: 184px;
   height: 66px;
-  flex: 0 0 187px;
+  flex: 0 0 184px;
   color: #475f8c;
   text-decoration: none;
+  border: 1.5px solid var(--frame-border);
+  border-bottom: 0;
+  border-radius: 16px 16px 0 0;
+  background: linear-gradient(180deg, var(--surface-soft), var(--nav-end));
+  box-shadow: none;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
 }
 
+.assignment-tab:not(.active):hover {
+  border-color: #b4c1db;
+  background: linear-gradient(180deg, var(--surface), var(--surface-soft));
+}
+
+/* dark mode styling for inactive navigation tabs */
+[data-theme="dark"] .assignment-tab:not(.active) {
+  background: linear-gradient(180deg, #1d2840, #131b2c);
+  border-color: #2f3d57;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .assignment-tab:not(.active):hover {
+  border-color: #485b80;
+  background: linear-gradient(180deg, #24314d, #182236);
+}
+
+/* highlighted gold border when selected (.active) — no glow */
+.assignment-tab.active {
+  z-index: 2;
+  border: 2px solid #ffd43b;
+  border-bottom: 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f7fe 100%);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .assignment-tab.active {
+  border: 2px solid #ffd43b;
+  border-bottom: 0;
+  background: linear-gradient(180deg, #24324f 0%, #1a2438 100%);
+  box-shadow: none;
+}
+
+/* hide old slanted svg shapes so every folder uses the rounded design */
 .tab-shape {
-  position: absolute;
-  inset: 0;
-  width: 188px;
-  height: 66px;
+  display: none !important;
 }
 
-.assignment-tab .light-active,
-.assignment-tab .dark-active,
-.assignment-tab .dark-inactive,
-[data-theme="dark"] .assignment-tab .light-inactive {
-  display: none;
-}
-
-.assignment-tab.active .light-inactive,
-[data-theme="dark"] .assignment-tab .light-active {
-  display: none;
-}
-
-.assignment-tab.active .light-active,
-[data-theme="dark"] .assignment-tab .dark-inactive,
-[data-theme="dark"] .assignment-tab.active .dark-active {
-  display: block;
-}
-
-[data-theme="dark"] .assignment-tab.active .dark-inactive {
-  display: none;
-}
-
+/* inner layout of each navigation tab holding the folder icon and two-line label */
 .tab-copy {
   position: absolute;
   z-index: 1;
   top: 17px;
-  left: 20px;
+  left: 16px;
+  right: 12px;
   display: flex;
   gap: 10px;
   align-items: center;
@@ -168,6 +216,7 @@ input {
   flex: 0 0 14px;
 }
 
+/* toggle visibility between light and dark folder icons based on active theme */
 .dark-folder,
 [data-theme="dark"] .light-folder {
   display: none;
@@ -177,9 +226,10 @@ input {
   display: block;
 }
 
-.tab-copy > span {
+.tab-copy>span {
   display: flex;
-  width: 135px;
+  width: auto;
+  min-width: 0;
   flex-direction: column;
   gap: 2px;
 }
@@ -189,6 +239,9 @@ input {
   font-family: "Arimo:Bold", Arial, sans-serif;
   font-size: 12px;
   line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .assignment-tab:not(.active) .tab-copy strong {
@@ -200,12 +253,16 @@ input {
   font-family: "Arimo:Regular", Arial, sans-serif;
   font-size: 11px;
   line-height: 1.05;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 [data-theme="dark"] .tab-copy small {
   color: #a6b8ff;
 }
 
+/* university logo positioning in the top-right header */
 .ateneo-logo {
   position: absolute;
   z-index: 2;
@@ -217,6 +274,7 @@ input {
   pointer-events: none;
 }
 
+/* circular theme toggle button positioned beside the university logo */
 .theme-button {
   position: absolute;
   z-index: 3;
@@ -243,6 +301,7 @@ input {
   margin: 0;
 }
 
+/* main rounded content frame resembling a desktop browser viewport */
 .workspace {
   min-height: calc(100vh - 73px);
   margin: 0 4px;
@@ -253,6 +312,7 @@ input {
   background: var(--workspace);
 }
 
+/* top bar inside workspace containing the three decorative window dots */
 .window-dots {
   display: flex;
   height: 38px;
@@ -267,12 +327,14 @@ input {
   height: 9px;
 }
 
+/* centered maximum-width container for calculator page content */
 .workspace-content {
   width: min(1200px, calc(100% - 50px));
   margin: 0 auto;
   padding: 14px 0 54px;
 }
 
+/* page title block with bottom divider border */
 .page-title {
   height: 67px;
   margin: 0 82px 13px 21px;
@@ -294,6 +356,7 @@ input {
   letter-spacing: 1.8px;
 }
 
+/* instructional helper line above calculator panels */
 .instruction {
   margin-bottom: 8px;
   color: var(--primary);
@@ -303,6 +366,7 @@ input {
   line-height: 20px;
 }
 
+/* two-column grid used by both unit conversion and arithmetic pages */
 .conversion-layout,
 .arithmetic-layout {
   display: grid;
@@ -310,6 +374,7 @@ input {
   gap: 22px;
 }
 
+/* reusable card container with rounded corners and border */
 .panel {
   overflow: hidden;
   border: 1px solid var(--border);
@@ -317,6 +382,7 @@ input {
   background: var(--surface);
 }
 
+/* shaded top header bar inside each panel */
 .panel-header {
   display: flex;
   height: 54px;
@@ -330,7 +396,8 @@ input {
   font-weight: 700;
 }
 
-.panel-header > span {
+/* pill-shaped status badge inside panel headers (e.g., result or employee count) */
+.panel-header>span {
   min-width: 92px;
   padding: 6px 14px;
   border-radius: 999px;
@@ -339,6 +406,7 @@ input {
   text-align: center;
 }
 
+/* shared minimum height for conversion and arithmetic cards */
 .conversion-controls,
 .conversion-output,
 .arithmetic-input,
@@ -362,6 +430,7 @@ input {
   margin-bottom: 9px;
 }
 
+/* unit conversion: metric vs imperial column headers and 2x2 unit button grid */
 .unit-column-labels {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -399,6 +468,7 @@ input {
   font-size: 16px;
 }
 
+/* active unit selection button state */
 .unit-option.selected {
   border-color: var(--button);
   background: var(--button);
@@ -422,6 +492,7 @@ input {
   font-weight: 700;
 }
 
+/* styled numeric and currency input wrappers with unit/symbol badges */
 .number-field,
 .currency-field {
   display: flex;
@@ -461,7 +532,7 @@ input {
   font-weight: 400;
 }
 
-.number-field > span {
+.number-field>span {
   display: grid;
   width: 55px;
   height: 29px;
@@ -473,6 +544,7 @@ input {
   font-size: 16px;
 }
 
+/* conversion action footer row containing status text and primary button */
 .conversion-action {
   display: grid;
   grid-template-columns: 1fr 162px;
@@ -486,6 +558,7 @@ input {
   font-size: 12px;
 }
 
+/* primary call-to-action button used across all calculator forms */
 .primary-button {
   height: 49px;
   border: 0;
@@ -502,6 +575,7 @@ input {
   filter: brightness(1.08);
 }
 
+/* unit conversion output card typography and formula display */
 .conversion-output .panel-body {
   padding: 29px 31px 20px;
 }
@@ -561,6 +635,7 @@ input {
   font-size: 18px;
 }
 
+/* income tax calculator two-column layout and bracket table styles */
 .tax-layout {
   display: grid;
   grid-template-columns: minmax(520px, 708px) minmax(340px, 468px);
@@ -613,6 +688,7 @@ input {
   color: var(--text);
 }
 
+/* alternating row shading for readability in the tax bracket table */
 .tax-row:nth-of-type(odd) {
   background: var(--surface-row);
 }
@@ -627,6 +703,7 @@ input {
   font-weight: 700;
 }
 
+/* right-hand stack for income tax input and output cards */
 .tax-side {
   display: flex;
   flex-direction: column;
@@ -650,7 +727,7 @@ input {
   margin-bottom: 20px;
 }
 
-.currency-field > span {
+.currency-field>span {
   display: grid;
   width: 46px;
   place-items: center;
@@ -706,6 +783,7 @@ input {
   font-size: 11px;
 }
 
+/* arithmetic calculator input validation states, helper text, and output rows */
 .arithmetic-input .panel-body {
   padding: 14px 23px;
 }
@@ -714,7 +792,7 @@ input {
   font-size: 23px;
 }
 
-.arithmetic-input h2 + p,
+.arithmetic-input h2+p,
 .input-help {
   color: var(--muted);
   font-size: 13px;
@@ -766,7 +844,7 @@ input {
   border-bottom: 1px solid var(--border);
 }
 
-.arithmetic-row > span {
+.arithmetic-row>span {
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -792,6 +870,7 @@ input {
   text-overflow: ellipsis;
 }
 
+/* simple payroll two-column layout, employee form inputs, table, and delete controls */
 .payroll-layout {
   display: grid;
   grid-template-columns: 304px minmax(650px, 1fr);
@@ -814,8 +893,8 @@ input {
   margin-bottom: 16px;
 }
 
-.employee-card label > span,
-.delete-area label > span {
+.employee-card label>span,
+.delete-area label>span {
   color: var(--text);
   font-family: "Arimo:Bold", Arial, sans-serif;
   font-size: 12px;
@@ -933,7 +1012,7 @@ input {
   border-top: 1px solid var(--border);
 }
 
-.delete-area > div > strong {
+.delete-area>div>strong {
   color: var(--primary);
   font-family: "Arimo:Bold", Arial, sans-serif;
   font-size: 11px;
@@ -968,6 +1047,7 @@ input {
   font-size: 12px;
 }
 
+/* tablet breakpoint (<= 1050px): compact logo, theme button, and column proportions */
 @media (max-width: 1050px) {
 
   .ateneo-logo {
@@ -998,6 +1078,7 @@ input {
   }
 }
 
+/* narrow desktop/tablet range (961px - 1060px): allow navigation tabs to shrink proportionally */
 @media (max-width: 1060px) and (min-width: 961px) {
   .assignment-tabs {
     width: calc(100% - 270px);
@@ -1009,29 +1090,14 @@ input {
     min-width: 0;
   }
 
-  .tab-shape {
-    width: 100%;
-  }
-
   .tab-copy {
-    left: 14px;
-    right: 12px;
+    left: 12px;
+    right: 10px;
     gap: 8px;
-  }
-
-  .tab-copy > span {
-    width: auto;
-    min-width: 0;
-  }
-
-  .tab-copy strong,
-  .tab-copy small {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
 }
 
+/* small tablet breakpoint (<= 960px): stack navigation tabs below logo and switch tax/payroll to single column */
 @media (max-width: 960px) {
   .top-navigation {
     height: 136px;
@@ -1062,32 +1128,27 @@ input {
   .assignment-tab {
     width: auto;
     height: 64px;
+    overflow: hidden;
+    border-radius: 12px;
   }
 
-  .tab-shape,
   .folder-icon {
     display: none !important;
   }
 
-  .assignment-tab {
-    overflow: hidden;
-    border: 1px solid var(--frame-border);
-    border-radius: 8px;
-    background: linear-gradient(180deg, var(--surface-soft), var(--nav-end));
-  }
-
   .assignment-tab.active {
-    border: 2px solid #ffda4d;
-    background: linear-gradient(180deg, var(--surface), var(--nav-start));
+    border: 2px solid #ffd43b;
+    box-shadow: none;
   }
 
   .tab-copy {
     top: 10px;
     left: 10px;
+    right: 10px;
     display: block;
   }
 
-  .tab-copy > span {
+  .tab-copy>span {
     width: auto;
   }
 
@@ -1199,6 +1260,7 @@ input {
   }
 }
 
+/* mobile breakpoint (<= 560px): 2x2 navigation tab grid and single-column layouts everywhere */
 @media (max-width: 560px) {
   .top-navigation {
     height: 208px;
@@ -1272,7 +1334,9 @@ input {
   }
 }
 
+/* disable smooth scrolling and css transitions when user prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -1281,7 +1345,7 @@ input {
   }
 }
 
-/* Clickable ADDU Logo Link & Theme Button Responsive Alignment */
+/* clickable addu logo link and theme button responsive alignment */
 .logo-link {
   position: absolute;
   z-index: 2;
@@ -1356,7 +1420,7 @@ input {
   }
 }
 
-/* Home Page Layout (Matches Reference Mockup) */
+/* home page layout, hero banner, 2x2 tool card grid, and footer tip */
 .home-workspace {
   padding-top: 68px;
 }
@@ -1521,6 +1585,7 @@ input {
   font-size: 12px;
 }
 
+/* stack home page tool cards into a single column on small tablets and phones */
 @media (max-width: 960px) {
   .home-workspace {
     padding-top: 24px;
