@@ -1,277 +1,290 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Simple employee payroll calculator" />
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <title>Simple Payroll</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script>
-      if (localStorage.getItem("cs1130-theme") === "dark") {
-        document.documentElement.dataset.theme = "dark";
-      }
-    </script>
-  </head>
-  <body>
-    <div class="app-frame">
-      <header class="top-navigation">
-        <a href="index.html" class="logo-link" aria-label="Return to Home Page" title="Return to Home Page">
-          <img
-          id="ateneo-logo"
-          class="ateneo-logo"
-          src="assets/a1c12.png"
-          alt="Ateneo de Davao University"
-        />
+
+<head>
+  <!-- document metadata, viewport setup, favicon, and stylesheet link -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Simple employee payroll calculator" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <title>Simple Payroll</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- apply saved dark theme immediately before rendering to prevent flash of light theme -->
+  <script>
+    if (localStorage.getItem("cs1130-theme") === "dark") {
+      document.documentElement.dataset.theme = "dark";
+    }
+  </script>
+</head>
+
+<body>
+  <!-- outer wrapper holding the top navigation bar and main workspace -->
+  <div class="app-frame">
+    <!-- header containing university logo, folder-style navigation tabs, and theme switcher -->
+    <header class="top-navigation">
+      <a href="index.html" class="logo-link" aria-label="Return to Home Page" title="Return to Home Page">
+        <img id="ateneo-logo" class="ateneo-logo" src="assets/a1c12.png" alt="Ateneo de Davao University" />
+      </a>
+      <!-- navigation tabs with simple payroll marked active -->
+      <nav class="assignment-tabs" aria-label="Assignments">
+        <a class="assignment-tab" href="unit-conversion.html">
+          <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+          <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+          <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+          <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+          <span class="tab-copy">
+            <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+            <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
+            <span>
+              <strong>Unit Conversion</strong>
+              <small>Basic Conversion Calculator</small>
+            </span>
+          </span>
         </a>
-        <nav class="assignment-tabs" aria-label="Assignments">
-          <a class="assignment-tab" href="unit-conversion.html">
-            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
-            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
-            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
-            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
-            <span class="tab-copy">
-              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
-              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
-              <span>
-                <strong>Unit Conversion</strong>
-                <small>Basic Conversion Calculator</small>
-              </span>
+        <a class="assignment-tab" href="income-tax-calculator.html">
+          <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+          <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+          <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+          <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+          <span class="tab-copy">
+            <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+            <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
+            <span>
+              <strong>Income Tax</strong>
+              <small>Income Tax Calculator</small>
             </span>
-          </a>
-          <a class="assignment-tab" href="income-tax-calculator.html">
-            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
-            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
-            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
-            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
-            <span class="tab-copy">
-              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
-              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
-              <span>
-                <strong>Income Tax</strong>
-                <small>Income Tax Calculator</small>
-              </span>
+          </span>
+        </a>
+        <a class="assignment-tab" href="arithmetic.html">
+          <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+          <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+          <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+          <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+          <span class="tab-copy">
+            <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+            <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
+            <span>
+              <strong>Arithmetic</strong>
+              <small>Factorial | Sum | Average</small>
             </span>
-          </a>
-          <a class="assignment-tab" href="arithmetic.html">
-            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
-            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
-            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
-            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
-            <span class="tab-copy">
-              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
-              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
-              <span>
-                <strong>Arithmetic</strong>
-                <small>Factorial | Sum | Average</small>
-              </span>
+          </span>
+        </a>
+        <a class="assignment-tab active" href="simple-payroll.html" aria-current="page">
+          <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+          <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+          <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+          <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+          <span class="tab-copy">
+            <img class="folder-icon light-folder" src="assets/15833.svg" alt="" />
+            <img class="folder-icon dark-folder" src="assets/412c1.svg" alt="" />
+            <span>
+              <strong>Simple Payroll</strong>
+              <small>Payroll Calculator</small>
             </span>
-          </a>
-          <a class="assignment-tab active" href="simple-payroll.html" aria-current="page">
-            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
-            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
-            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
-            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
-            <span class="tab-copy">
-              <img class="folder-icon light-folder" src="assets/15833.svg" alt="" />
-              <img class="folder-icon dark-folder" src="assets/412c1.svg" alt="" />
-              <span>
-                <strong>Simple Payroll</strong>
-                <small>Payroll Calculator</small>
-              </span>
-            </span>
-          </a>
-        </nav>
-        <button
-          id="theme-button"
-          class="theme-button"
-          type="button"
-          aria-label="Switch to dark mode"
-        >
-          <img id="theme-icon" src="assets/b1186.svg" alt="" />
-        </button>
-      </header>
-      <main class="workspace">
-        <div class="window-dots" aria-hidden="true">
-          <img src="assets/c9fa6.svg" alt="" />
-          <img src="assets/9e541.svg" alt="" />
-          <img src="assets/86e71.svg" alt="" />
-        </div>
-        <div class="workspace-content">
-          <header class="page-title">
-            <h1>Simple Payroll</h1>
-            <p>Employee Details | Gross Pay | Net Pay</p>
-          </header>
-          <p class="instruction">Enter employee details to add a payroll record, or delete a record by its line number.</p>
-          <div class="payroll-layout">
-            <section class="panel employee-card">
-              <header class="panel-header">
-                <strong>01 / EMPLOYEE DETAILS</strong>
-              </header>
-              <div class="panel-body">
-                <form id="payroll-form">
+          </span>
+        </a>
+      </nav>
+      <!-- button to toggle between light and dark color themes -->
+      <button id="theme-button" class="theme-button" type="button" aria-label="Switch to dark mode">
+        <img id="theme-icon" src="assets/b1186.svg" alt="" />
+      </button>
+    </header>
+    <!-- main browser-window style workspace area -->
+    <main class="workspace">
+      <!-- decorative window control dots -->
+      <div class="window-dots" aria-hidden="true">
+        <img src="assets/c9fa6.svg" alt="" />
+        <img src="assets/9e541.svg" alt="" />
+        <img src="assets/86e71.svg" alt="" />
+      </div>
+      <div class="workspace-content">
+        <!-- page title and subtitle header -->
+        <header class="page-title">
+          <h1>Simple Payroll</h1>
+          <p>Employee Details | Gross Pay | Net Pay</p>
+        </header>
+        <p class="instruction">Enter employee details to add a payroll record, or delete a record by its line number.
+        </p>
+        <!-- two-column layout pairing the employee entry form with the dynamic payroll table -->
+        <div class="payroll-layout">
+          <!-- left panel: form for inputting employee name, days worked, daily rate, and deductions -->
+          <section class="panel employee-card">
+            <header class="panel-header">
+              <strong>01 / EMPLOYEE DETAILS</strong>
+            </header>
+            <div class="panel-body">
+              <form id="payroll-form">
+                <label>
+                  <span>Employee Name</span>
+                  <input id="emp-name" type="text" pattern="[A-Za-z\s]+" title="Letters and spaces only"
+                    placeholder="Enter employee name" required />
+                </label>
+                <div class="two-fields">
                   <label>
-                    <span>Employee Name</span>
-                    <input
-                      id="emp-name"
-                      placeholder="Enter employee name"
-                    />
+                    <span>Days Worked</span>
+                    <input id="emp-days" type="number" min="0" placeholder="e.g. 22" required />
                   </label>
-                  <div class="two-fields">
-                    <label>
-                      <span>Days Worked</span>
-                      <input
-                        id="emp-days"
-                        type="number"
-                        min="0"
-                        placeholder="e.g. 22"
-                      />
-                    </label>
-                    <label>
-                      <span>Daily Rate</span>
-                      <input
-                        id="emp-rate"
-                        type="number"
-                        min="0"
-                        placeholder="₱ 0"
-                      />
-                    </label>
-                  </div>
                   <label>
-                    <span>Deduction Amount</span>
-                    <input
-                      id="emp-deduction"
-                      type="number"
-                      min="0"
-                      placeholder="₱ 0"
-                    />
+                    <span>Daily Rate</span>
+                    <input id="emp-rate" type="number" min="0" placeholder="₱ 0" required />
                   </label>
-                  <button class="primary-button" type="submit">
-                    Add to payroll
-                  </button>
-                </form>
-                <div class="how-it-works compact">
-                  <strong>HOW IT WORKS</strong>
-                  <p>Add an employee to calculate gross and net pay.</p>
+                </div>
+                <label>
+                  <span>Deduction Amount</span>
+                  <input id="emp-deduction" type="number" min="0" placeholder="₱ 0" required />
+                </label>
+                <button class="primary-button" type="submit">
+                  Add to payroll
+                </button>
+              </form>
+              <div class="how-it-works compact">
+                <strong>HOW IT WORKS</strong>
+                <p>Add an employee to calculate gross and net pay.</p>
+              </div>
+            </div>
+          </section>
+          <!-- right panel: payroll table, empty state placeholder, formulas, and record deletion controls -->
+          <section class="panel payroll-list">
+            <header class="panel-header">
+              <strong>PAYROLL LIST</strong>
+              <span id="employee-count-badge">0 EMPLOYEES</span>
+            </header>
+            <div class="panel-body">
+              <div class="payroll-table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>No.</th>
+                      <th>Employee Name</th>
+                      <th>Days Worked</th>
+                      <th>Daily Rate</th>
+                      <th>Gross Pay</th>
+                      <th>Deduction Amount</th>
+                      <th>Net Pay</th>
+                    </tr>
+                  </thead>
+                  <tbody id="payroll-tbody"></tbody>
+                </table>
+                <!-- placeholder message shown when no employee records exist -->
+                <div id="empty-payroll" class="empty-payroll">
+                  <strong>No payroll records yet</strong>
+                  <p>Enter employee details and select Add to payroll to begin.</p>
                 </div>
               </div>
-            </section>
-            <section class="panel payroll-list">
-              <header class="panel-header">
-                <strong>PAYROLL LIST</strong>
-                <span id="employee-count-badge">0 EMPLOYEES</span>
-              </header>
-              <div class="panel-body">
-                <div class="payroll-table-wrap">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>No.</th>
-                        <th>Employee Name</th>
-                        <th>Days Worked</th>
-                        <th>Daily Rate</th>
-                        <th>Gross Pay</th>
-                        <th>Deduction Amount</th>
-                        <th>Net Pay</th>
-                      </tr>
-                    </thead>
-                    <tbody id="payroll-tbody"></tbody>
-                  </table>
-                  <div id="empty-payroll" class="empty-payroll">
-                    <strong>No payroll records yet</strong>
-                    <p>Enter employee details and select Add to payroll to begin.</p>
-                  </div>
-                </div>
-                <p class="line-note">No. = Payroll list line number</p>
-                <div class="payroll-formulas">
-                  <strong>Gross Pay = Days Worked × Daily Rate</strong>
-                  <strong>Net Pay = Gross Pay − Deduction Amount</strong>
-                </div>
-                <div class="delete-area">
-                  <div>
-                    <strong>DELETE A RECORD</strong>
-                    <p>Enter the line number to delete.</p>
-                  </div>
-                  <label>
-                    <span>Line Number</span>
-                    <input
-                      id="delete-line-input"
-                      type="number"
-                      min="1"
-                      placeholder="e.g. 1"
-                    />
-                  </label>
-                  <button id="delete-record-btn" type="button">
-                    Delete record
-                  </button>
-                </div>
-                <p class="table-update-note">
-                  The payroll table updates after a record is added or deleted.
-                </p>
+              <p class="line-note">No. = Payroll list line number</p>
+              <div class="payroll-formulas">
+                <strong>Gross Pay = Days Worked × Daily Rate</strong>
+                <strong>Net Pay = Gross Pay − Deduction Amount</strong>
               </div>
-            </section>
-          </div>
+              <!-- controls to remove a payroll entry by its 1-based row number -->
+              <div class="delete-area">
+                <div>
+                  <strong>DELETE A RECORD</strong>
+                  <p>Enter the line number to delete.</p>
+                </div>
+                <label>
+                  <span>Line Number</span>
+                  <input id="delete-line-input" type="number" min="1" placeholder="e.g. 1" />
+                </label>
+                <button id="delete-record-btn" type="button">
+                  Delete record
+                </button>
+              </div>
+              <p class="table-update-note">
+                The payroll table updates after a record is added or deleted.
+              </p>
+            </div>
+          </section>
         </div>
-      </main>
-    </div>
-    <script>
-      (function () {
-        const logo = document.getElementById("ateneo-logo");
-        const btn = document.getElementById("theme-button");
-        const icon = document.getElementById("theme-icon");
+      </div>
+    </main>
+  </div>
+  <!-- theme management script that syncs dark/light mode across local storage and swaps icons -->
+  <script>
+    (function () {
+      const logo = document.getElementById("ateneo-logo");
+      const btn = document.getElementById("theme-button");
+      const icon = document.getElementById("theme-icon");
 
-        function applyTheme(isDark) {
-          document.documentElement.dataset.theme = isDark ? "dark" : "light";
-          localStorage.setItem("cs1130-theme", isDark ? "dark" : "light");
-          logo.src = isDark ? "assets/cee41.png" : "assets/a1c12.png";
-          icon.src = isDark ? "assets/c409f.svg" : "assets/b1186.svg";
-          btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
-        }
+      // updates the root theme attribute, persists choice in local storage, and swaps logo/button icons
+      function applyTheme(isDark) {
+        document.documentElement.dataset.theme = isDark ? "dark" : "light";
+        localStorage.setItem("cs1130-theme", isDark ? "dark" : "light");
+        logo.src = isDark ? "assets/cee41.png" : "assets/a1c12.png";
+        icon.src = isDark ? "assets/c409f.svg" : "assets/b1186.svg";
+        btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+      }
 
-        applyTheme(localStorage.getItem("cs1130-theme") === "dark");
+      // initialize theme on page load based on saved preference
+      applyTheme(localStorage.getItem("cs1130-theme") === "dark");
 
-        btn.addEventListener("click", function () {
-          const isDark = document.documentElement.dataset.theme === "dark";
-          applyTheme(!isDark);
-        });
-      })();
-    </script>
-    <script>
-      (function () {
-        const money = new Intl.NumberFormat("en-PH", {
-          style: "currency",
-          currency: "PHP",
-          minimumFractionDigits: 2,
-        });
+      // toggle between light and dark themes when the theme button is clicked
+      btn.addEventListener("click", function () {
+        const isDark = document.documentElement.dataset.theme === "dark";
+        applyTheme(!isDark);
+      });
+    })();
+  </script>
+  <!-- payroll state management script for adding, validating, rendering, and deleting records -->
+  <script>
+    (function () {
+      // currency formatter configured for philippine peso with two decimal places
+      const money = new Intl.NumberFormat("en-PH", {
+        style: "currency",
+        currency: "PHP",
+        minimumFractionDigits: 2,
+      });
 
-        let records = [];
+      // in-memory array storing employee payroll objects
+      let records = [];
 
-        const form = document.getElementById("payroll-form");
-        const nameInput = document.getElementById("emp-name");
-        const daysInput = document.getElementById("emp-days");
-        const rateInput = document.getElementById("emp-rate");
-        const deductionInput = document.getElementById("emp-deduction");
-        const tbody = document.getElementById("payroll-tbody");
-        const emptyState = document.getElementById("empty-payroll");
-        const countBadge = document.getElementById("employee-count-badge");
-        const deleteInput = document.getElementById("delete-line-input");
-        const deleteBtn = document.getElementById("delete-record-btn");
+      const form = document.getElementById("payroll-form");
+      const nameInput = document.getElementById("emp-name");
+      const daysInput = document.getElementById("emp-days");
+      const rateInput = document.getElementById("emp-rate");
+      const deductionInput = document.getElementById("emp-deduction");
+      const tbody = document.getElementById("payroll-tbody");
+      const emptyState = document.getElementById("empty-payroll");
+      const countBadge = document.getElementById("employee-count-badge");
+      const deleteInput = document.getElementById("delete-line-input");
+      const deleteBtn = document.getElementById("delete-record-btn");
 
-        function escapeHtml(str) {
-          return str
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-        }
+      // allow only letters (a-z, a-z) and spaces in employee name
+      nameInput.addEventListener("input", () => {
+        nameInput.value = nameInput.value.replace(/[^a-zA-Z\s]/g, "");
+      });
 
-        function render() {
-          countBadge.textContent = `${records.length} ${records.length === 1 ? "EMPLOYEE" : "EMPLOYEES"}`;
-          emptyState.style.display = records.length === 0 ? "block" : "none";
-          tbody.innerHTML = records
-            .map(
-              (rec, idx) => `
+      // clears any custom browser validation message on the delete input
+      function clearDeleteError() {
+        deleteInput.setCustomValidity("");
+      }
+
+      // displays a native validation tooltip and focuses the delete input when an error occurs
+      function showDeleteError(message) {
+        deleteInput.setCustomValidity(message);
+        deleteInput.reportValidity();
+        deleteInput.focus();
+      }
+
+      deleteInput.addEventListener("input", clearDeleteError);
+
+      // sanitizes special html characters to prevent cross-site scripting when rendering employee names
+      function escapeHtml(str) {
+        return str
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      // rebuilds the payroll table rows, updates the employee count badge, and toggles the empty state
+      function render() {
+        countBadge.textContent = `${records.length} ${records.length === 1 ? "EMPLOYEE" : "EMPLOYEES"}`;
+        emptyState.style.display = records.length === 0 ? "block" : "none";
+        tbody.innerHTML = records
+          .map(
+            (rec, idx) => `
               <tr>
                 <td>${idx + 1}</td>
                 <td>${escapeHtml(rec.name)}</td>
@@ -281,42 +294,107 @@
                 <td>${money.format(rec.deduction)}</td>
                 <td>${money.format(rec.net)}</td>
               </tr>`
-            )
-            .join("");
+          )
+          .join("");
+      }
+
+      // validates form inputs, calculates gross and net pay, appends a new record, and clears fields
+      function addRecord() {
+        const cleanName = nameInput.value.replace(/[^a-zA-Z\s]/g, "").trim();
+
+        // stop submission if any of the four inputs are empty
+        if (
+          !cleanName ||
+          daysInput.value.trim() === "" ||
+          rateInput.value.trim() === "" ||
+          deductionInput.value.trim() === ""
+        ) {
+          if (!cleanName) {
+            nameInput.value = "";
+            nameInput.focus();
+          }
+          form.reportValidity();
+          return;
         }
 
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          const dayCount = Math.max(0, Number(daysInput.value) || 0);
-          const dailyRate = Math.max(0, Number(rateInput.value) || 0);
-          const deductionAmount = Math.max(0, Number(deductionInput.value) || 0);
-          const gross = dayCount * dailyRate;
+        const dayCount = Math.max(0, Number(daysInput.value));
+        const dailyRate = Math.max(0, Number(rateInput.value));
+        const deductionAmount = Math.max(0, Number(deductionInput.value));
+        const gross = dayCount * dailyRate;
 
-          records.push({
-            name: nameInput.value.trim() || "Employee",
-            days: dayCount,
-            rate: dailyRate,
-            gross: gross,
-            deduction: deductionAmount,
-            net: gross - deductionAmount,
-          });
-
-          nameInput.value = "";
-          daysInput.value = "";
-          rateInput.value = "";
-          deductionInput.value = "";
-          render();
+        records.push({
+          name: cleanName,
+          days: dayCount,
+          rate: dailyRate,
+          gross: gross,
+          deduction: deductionAmount,
+          net: gross - deductionAmount,
         });
 
-        deleteBtn.addEventListener("click", () => {
-          const index = Number(deleteInput.value) - 1;
-          if (Number.isInteger(index) && index >= 0 && index < records.length) {
-            records.splice(index, 1);
-            deleteInput.value = "";
-            render();
+        nameInput.value = "";
+        daysInput.value = "";
+        rateInput.value = "";
+        deductionInput.value = "";
+        nameInput.focus();
+        clearDeleteError();
+        render();
+      }
+
+      // validates the entered line number and removes the matching record from the payroll array
+      function deleteRecord() {
+        const rawValue = deleteInput.value.trim();
+
+        if (records.length === 0) {
+          showDeleteError("There are no payroll records to delete.");
+          return;
+        }
+
+        if (rawValue === "") {
+          showDeleteError("Please enter a line number to delete.");
+          return;
+        }
+
+        const lineNumber = Number(rawValue);
+        const index = lineNumber - 1;
+
+        if (!Number.isInteger(lineNumber) || index < 0 || index >= records.length) {
+          showDeleteError(
+            `Line number ${rawValue} was not found. Enter a number from 1 to ${records.length}.`
+          );
+          return;
+        }
+
+        records.splice(index, 1);
+        deleteInput.value = "";
+        clearDeleteError();
+        render();
+      }
+
+      // handle form submit event
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        addRecord();
+      });
+
+      // submit employee record on enter key inside any employee detail input
+      [nameInput, daysInput, rateInput, deductionInput].forEach((input) => {
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            addRecord();
           }
         });
-      })();
-    </script>
-  </body>
+      });
+
+      // delete record on click or enter key inside the line number input
+      deleteBtn.addEventListener("click", deleteRecord);
+      deleteInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          deleteRecord();
+        }
+      });
+    })();
+  </script>
+</body>
 </html>
