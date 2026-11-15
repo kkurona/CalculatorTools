@@ -1,187 +1,199 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Calculator Tools Portfolio" />
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <title>Homepage</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script>
-      if (localStorage.getItem("cs1130-theme") === "dark") {
-        document.documentElement.dataset.theme = "dark";
-      }
-    </script>
-  </head>
-  <body>
-    <div class="app-frame">
-      <header class="top-navigation">
-        <a href="index.html" class="logo-link" aria-label="Return to Home Page" title="Return to Home Page">
-          <img
-            id="ateneo-logo"
-            class="ateneo-logo"
-            src="assets/a1c12.png"
-            alt="Ateneo de Davao University"
-          />
+
+<head>
+  <!-- document metadata, viewport setup, favicon, and stylesheet link -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calculator Tools Portfolio" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <title>Homepage</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- apply saved dark theme immediately before rendering to prevent flash of light theme -->
+  <script>
+    if (localStorage.getItem("cs1130-theme") === "dark") {
+      document.documentElement.dataset.theme = "dark";
+    }
+  </script>
+</head>
+
+<body>
+  <!-- outer wrapper holding the top navigation bar and main workspace -->
+  <div class="app-frame">
+    <!-- header containing university logo, folder-style navigation tabs, and theme switcher -->
+    <header class="top-navigation">
+      <a href="index.html" class="logo-link" aria-label="Return to Home Page" title="Return to Home Page">
+        <img id="ateneo-logo" class="ateneo-logo" src="assets/a1c12.png" alt="Ateneo de Davao University" />
+      </a>
+      <!-- navigation bar linking to all four calculator assignment pages -->
+      <nav class="assignment-tabs" aria-label="Assignments">
+        <a class="assignment-tab" href="unit-conversion.html">
+          <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+          <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+          <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+          <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+          <span class="tab-copy">
+            <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+            <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
+            <span>
+              <strong>Unit Conversion</strong>
+              <small>Basic Conversion Calculator</small>
+            </span>
+          </span>
         </a>
-        <nav class="assignment-tabs" aria-label="Assignments">
-          <a class="assignment-tab" href="unit-conversion.html">
-            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
-            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
-            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
-            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
-            <span class="tab-copy">
-              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
-              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
-              <span>
-                <strong>Unit Conversion</strong>
-                <small>Basic Conversion Calculator</small>
-              </span>
+        <a class="assignment-tab" href="income-tax-calculator.html">
+          <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+          <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+          <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+          <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+          <span class="tab-copy">
+            <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+            <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
+            <span>
+              <strong>Income Tax</strong>
+              <small>Income Tax Calculator</small>
             </span>
-          </a>
-          <a class="assignment-tab" href="income-tax-calculator.html">
-            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
-            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
-            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
-            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
-            <span class="tab-copy">
-              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
-              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
-              <span>
-                <strong>Income Tax</strong>
-                <small>Income Tax Calculator</small>
-              </span>
+          </span>
+        </a>
+        <a class="assignment-tab" href="arithmetic.html">
+          <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+          <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+          <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+          <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+          <span class="tab-copy">
+            <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+            <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
+            <span>
+              <strong>Arithmetic</strong>
+              <small>Factorial | Sum | Average</small>
             </span>
-          </a>
-          <a class="assignment-tab" href="arithmetic.html">
-            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
-            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
-            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
-            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
-            <span class="tab-copy">
-              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
-              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
-              <span>
-                <strong>Arithmetic</strong>
-                <small>Factorial | Sum | Average</small>
-              </span>
+          </span>
+        </a>
+        <a class="assignment-tab" href="simple-payroll.html">
+          <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+          <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+          <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+          <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+          <span class="tab-copy">
+            <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+            <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
+            <span>
+              <strong>Simple Payroll</strong>
+              <small>Payroll Calculator</small>
             </span>
-          </a>
-          <a class="assignment-tab" href="simple-payroll.html">
-            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
-            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
-            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
-            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
-            <span class="tab-copy">
-              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
-              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
-              <span>
-                <strong>Simple Payroll</strong>
-                <small>Payroll Calculator</small>
-              </span>
-            </span>
-          </a>
-        </nav>
-        <button
-          id="theme-button"
-          class="theme-button"
-          type="button"
-          aria-label="Switch to dark mode"
-        >
-          <img id="theme-icon" src="assets/b1186.svg" alt="" />
-        </button>
-      </header>
-      <main class="workspace">
-        <div class="window-dots" aria-hidden="true">
-          <img src="assets/c9fa6.svg" alt="" />
-          <img src="assets/9e541.svg" alt="" />
-          <img src="assets/86e71.svg" alt="" />
-        </div>
-        <div class="workspace-content home-workspace">
-          <div class="home-top-divider" aria-hidden="true"></div>
-          <p class="instruction">Select a tool to open its calculator.</p>
+          </span>
+        </a>
+      </nav>
+      <!-- button to toggle between light and dark color themes -->
+      <button id="theme-button" class="theme-button" type="button" aria-label="Switch to dark mode">
+        <img id="theme-icon" src="assets/b1186.svg" alt="" />
+      </button>
+    </header>
+    <!-- main browser-window style workspace area -->
+    <main class="workspace">
+      <!-- decorative window control dots in the top-left corner -->
+      <div class="window-dots" aria-hidden="true">
+        <img src="assets/c9fa6.svg" alt="" />
+        <img src="assets/9e541.svg" alt="" />
+        <img src="assets/86e71.svg" alt="" />
+      </div>
+      <!-- centered home page container -->
+      <div class="workspace-content home-workspace">
+        <div class="home-top-divider" aria-hidden="true"></div>
+        <p class="instruction">Select a tool to open its calculator.</p>
 
-          <section class="panel home-hero-card">
-            <span class="home-eyebrow">Home Page</span>
-            <h1>Calculator Tools</h1>
-            <p class="home-author">by: Andre Gilbert R. Abarico</p>
-          </section>
+        <!-- hero banner displaying portfolio title and author -->
+        <section class="panel home-hero-card">
+          <span class="home-eyebrow">Home Page</span>
+          <h1>Calculator Tools</h1>
+          <p class="home-author">by: Andre Gilbert R. Abarico</p>
+        </section>
 
-          <section class="panel home-tools-panel">
-            <header class="panel-header home-tools-header">
-              <strong>Calculators</strong>
-              <h2>Tools</h2>
-            </header>
-            <div class="home-tools-grid">
-              <a class="home-tool-card" href="unit-conversion.html">
-                <div class="home-tool-badge">01</div>
-                <div class="home-tool-info">
-                  <span class="home-tool-assignment">ASSIGNMENT 01</span>
-                  <h3>Unit Conversion</h3>
-                  <p>Basic Conversion Calculator</p>
-                </div>
-                <span class="home-tool-arrow" aria-hidden="true">→</span>
-              </a>
+        <!-- grid panel containing cards for each calculator assignment -->
+        <section class="panel home-tools-panel">
+          <header class="panel-header home-tools-header">
+            <strong>Calculators</strong>
+            <h2>Tools</h2>
+          </header>
+          <div class="home-tools-grid">
+            <!-- card link for assignment 01: unit conversion -->
+            <a class="home-tool-card" href="unit-conversion.html">
+              <div class="home-tool-badge">01</div>
+              <div class="home-tool-info">
+                <span class="home-tool-assignment">ASSIGNMENT 01</span>
+                <h3>Unit Conversion</h3>
+                <p>Basic Conversion Calculator</p>
+              </div>
+              <span class="home-tool-arrow" aria-hidden="true">→</span>
+            </a>
 
-              <a class="home-tool-card" href="income-tax-calculator.html">
-                <div class="home-tool-badge">02</div>
-                <div class="home-tool-info">
-                  <span class="home-tool-assignment">ASSIGNMENT 02</span>
-                  <h3>Income Tax</h3>
-                  <p>Income Tax Calculator</p>
-                </div>
-                <span class="home-tool-arrow" aria-hidden="true">→</span>
-              </a>
+            <!-- card link for assignment 02: income tax -->
+            <a class="home-tool-card" href="income-tax-calculator.html">
+              <div class="home-tool-badge">02</div>
+              <div class="home-tool-info">
+                <span class="home-tool-assignment">ASSIGNMENT 02</span>
+                <h3>Income Tax</h3>
+                <p>Income Tax Calculator</p>
+              </div>
+              <span class="home-tool-arrow" aria-hidden="true">→</span>
+            </a>
 
-              <a class="home-tool-card" href="arithmetic.html">
-                <div class="home-tool-badge">03</div>
-                <div class="home-tool-info">
-                  <span class="home-tool-assignment">ASSIGNMENT 03</span>
-                  <h3>Arithmetic</h3>
-                  <p>Factorial | Sum | Average</p>
-                </div>
-                <span class="home-tool-arrow" aria-hidden="true">→</span>
-              </a>
+            <!-- card link for assignment 03: arithmetic -->
+            <a class="home-tool-card" href="arithmetic.html">
+              <div class="home-tool-badge">03</div>
+              <div class="home-tool-info">
+                <span class="home-tool-assignment">ASSIGNMENT 03</span>
+                <h3>Arithmetic</h3>
+                <p>Factorial | Sum | Average</p>
+              </div>
+              <span class="home-tool-arrow" aria-hidden="true">→</span>
+            </a>
 
-              <a class="home-tool-card" href="simple-payroll.html">
-                <div class="home-tool-badge">04</div>
-                <div class="home-tool-info">
-                  <span class="home-tool-assignment">ASSIGNMENT 04</span>
-                  <h3>Simple Payroll</h3>
-                  <p>Payroll Calculator</p>
-                </div>
-                <span class="home-tool-arrow" aria-hidden="true">→</span>
-              </a>
-            </div>
-            <footer class="home-tools-footer">
-              <strong>Dark Mode and Light Mode Feature</strong>
-              <span>Press the sun/moon logo beside the ADDU logo to try it out</span>
-            </footer>
-          </section>
-        </div>
-      </main>
-    </div>
-    <script>
-      (function () {
-        const logo = document.getElementById("ateneo-logo");
-        const btn = document.getElementById("theme-button");
-        const icon = document.getElementById("theme-icon");
+            <!-- card link for assignment 04: simple payroll -->
+            <a class="home-tool-card" href="simple-payroll.html">
+              <div class="home-tool-badge">04</div>
+              <div class="home-tool-info">
+                <span class="home-tool-assignment">ASSIGNMENT 04</span>
+                <h3>Simple Payroll</h3>
+                <p>Payroll Calculator</p>
+              </div>
+              <span class="home-tool-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+          <!-- footer tip explaining how to use the theme toggle button -->
+          <footer class="home-tools-footer">
+            <strong>Dark Mode and Light Mode Feature</strong>
+            <span>Press the sun/moon logo beside the ADDU logo to try it out</span>
+          </footer>
+        </section>
+      </div>
+    </main>
+  </div>
+  <!-- theme management script that syncs dark/light mode across local storage and swaps icons -->
+  <script>
+    (function () {
+      const logo = document.getElementById("ateneo-logo");
+      const btn = document.getElementById("theme-button");
+      const icon = document.getElementById("theme-icon");
 
-        function applyTheme(isDark) {
-          document.documentElement.dataset.theme = isDark ? "dark" : "light";
-          localStorage.setItem("cs1130-theme", isDark ? "dark" : "light");
-          logo.src = isDark ? "assets/cee41.png" : "assets/a1c12.png";
-          icon.src = isDark ? "assets/c409f.svg" : "assets/b1186.svg";
-          btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
-        }
+      // updates the root theme attribute, persists choice in local storage, and swaps logo/button icons
+      function applyTheme(isDark) {
+        document.documentElement.dataset.theme = isDark ? "dark" : "light";
+        localStorage.setItem("cs1130-theme", isDark ? "dark" : "light");
+        logo.src = isDark ? "assets/cee41.png" : "assets/a1c12.png";
+        icon.src = isDark ? "assets/c409f.svg" : "assets/b1186.svg";
+        btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+      }
 
-        applyTheme(localStorage.getItem("cs1130-theme") === "dark");
+      // initialize theme on page load based on saved preference
+      applyTheme(localStorage.getItem("cs1130-theme") === "dark");
 
-        btn.addEventListener("click", function () {
-          const isDark = document.documentElement.dataset.theme === "dark";
-          applyTheme(!isDark);
-        });
-      })();
-    </script>
-  </body>
+      // toggle between light and dark themes when the theme button is clicked
+      btn.addEventListener("click", function () {
+        const isDark = document.documentElement.dataset.theme === "dark";
+        applyTheme(!isDark);
+      });
+    })();
+  </script>
+</body>
 </html>
