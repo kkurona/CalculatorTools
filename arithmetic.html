@@ -190,4 +190,53 @@
       })();
     </script>
     <script>
-    <!-- Arithmetic Calculator Script -->
+      (function () {
+        const inputEl = document.getElementById("arithmetic-n-input");
+        const helpEl = document.getElementById("arithmetic-help");
+        const calcBtn = document.getElementById("arithmetic-calc-btn");
+        const resFactorial = document.getElementById("res-factorial");
+        const resSum = document.getElementById("res-sum");
+        const resAverage = document.getElementById("res-average");
+
+        calcBtn.addEventListener("click", () => {
+          const n = Number(inputEl.value);
+          if (!Number.isInteger(n) || n < 1 || n > 170) {
+            helpEl.textContent = "Enter a whole number from 1 to 170.";
+            helpEl.classList.add("error");
+            resFactorial.textContent = "—";
+            resSum.textContent = "—";
+            resAverage.textContent = "—";
+            return;
+          }
+
+          let factorial = 1;
+          let factor = 1;
+          while (factor <= n) {
+            factorial *= factor;
+            factor += 1;
+          }
+
+          let sum = 0;
+          let addend = 1;
+          do {
+            sum += addend;
+            addend += 1;
+          } while (addend <= n);
+
+          let total = 0;
+          for (let number = 1; number <= n; number += 1) {
+            total += number;
+          }
+
+          const average = total / n;
+
+          helpEl.textContent = "Use a positive whole number (1, 2, 3, …).";
+          helpEl.classList.remove("error");
+          resFactorial.textContent = factorial.toLocaleString("en-US");
+          resSum.textContent = sum.toLocaleString("en-US");
+          resAverage.textContent = average.toLocaleString("en-US");
+        });
+      })();
+    </script>
+  </body>
+</html>
