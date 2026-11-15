@@ -133,7 +133,7 @@
                         id="emp-rate"
                         type="number"
                         min="0"
-                        placeholder="₱ 0.00"
+                        placeholder="₱ 0"
                       />
                     </label>
                   </div>
@@ -143,7 +143,7 @@
                       id="emp-deduction"
                       type="number"
                       min="0"
-                      placeholder="₱ 0.00"
+                      placeholder="₱ 0"
                     />
                   </label>
                   <button class="primary-button" type="submit">
@@ -237,4 +237,86 @@
       })();
     </script>
     <script>
-    <!-- Simple Payroll Script -->
+      (function () {
+        const money = new Intl.NumberFormat("en-PH", {
+          style: "currency",
+          currency: "PHP",
+          minimumFractionDigits: 2,
+        });
+
+        let records = [];
+
+        const form = document.getElementById("payroll-form");
+        const nameInput = document.getElementById("emp-name");
+        const daysInput = document.getElementById("emp-days");
+        const rateInput = document.getElementById("emp-rate");
+        const deductionInput = document.getElementById("emp-deduction");
+        const tbody = document.getElementById("payroll-tbody");
+        const emptyState = document.getElementById("empty-payroll");
+        const countBadge = document.getElementById("employee-count-badge");
+        const deleteInput = document.getElementById("delete-line-input");
+        const deleteBtn = document.getElementById("delete-record-btn");
+
+        function escapeHtml(str) {
+          return str
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+        }
+
+        function render() {
+          countBadge.textContent = `${records.length} ${records.length === 1 ? "EMPLOYEE" : "EMPLOYEES"}`;
+          emptyState.style.display = records.length === 0 ? "block" : "none";
+          tbody.innerHTML = records
+            .map(
+              (rec, idx) => `
+              <tr>
+                <td>${idx + 1}</td>
+                <td>${escapeHtml(rec.name)}</td>
+                <td>${rec.days}</td>
+                <td>${money.format(rec.rate)}</td>
+                <td>${money.format(rec.gross)}</td>
+                <td>${money.format(rec.deduction)}</td>
+                <td>${money.format(rec.net)}</td>
+              </tr>`
+            )
+            .join("");
+        }
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const dayCount = Math.max(0, Number(daysInput.value) || 0);
+          const dailyRate = Math.max(0, Number(rateInput.value) || 0);
+          const deductionAmount = Math.max(0, Number(deductionInput.value) || 0);
+          const gross = dayCount * dailyRate;
+
+          records.push({
+            name: nameInput.value.trim() || "Employee",
+            days: dayCount,
+            rate: dailyRate,
+            gross: gross,
+            deduction: deductionAmount,
+            net: gross - deductionAmount,
+          });
+
+          nameInput.value = "";
+          daysInput.value = "";
+          rateInput.value = "";
+          deductionInput.value = "";
+          render();
+        });
+
+        deleteBtn.addEventListener("click", () => {
+          const index = Number(deleteInput.value) - 1;
+          if (Number.isInteger(index) && index >= 0 && index < records.length) {
+            records.splice(index, 1);
+            deleteInput.value = "";
+            render();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
