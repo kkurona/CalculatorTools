@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Factorial, sum, and average of the first N natural numbers" />
+    <meta name="description" content="Philippine annual income tax calculator" />
     <link rel="icon" type="image/png" href="favicon.png" />
-    <title>Arithmetic</title>
+    <title>Income Tax Calculator</title>
     <link rel="stylesheet" href="styles.css" />
     <script>
       if (localStorage.getItem("cs1130-theme") === "dark") {
@@ -39,21 +39,7 @@
               </span>
             </span>
           </a>
-          <a class="assignment-tab" href="income-tax-calculator.html">
-            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
-            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
-            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
-            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
-            <span class="tab-copy">
-              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
-              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
-              <span>
-                <strong>Income Tax</strong>
-                <small>Income Tax Calculator</small>
-              </span>
-            </span>
-          </a>
-          <a class="assignment-tab active" href="arithmetic.html" aria-current="page">
+          <a class="assignment-tab active" href="income-tax-calculator.html" aria-current="page">
             <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
             <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
             <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
@@ -61,6 +47,20 @@
             <span class="tab-copy">
               <img class="folder-icon light-folder" src="assets/15833.svg" alt="" />
               <img class="folder-icon dark-folder" src="assets/412c1.svg" alt="" />
+              <span>
+                <strong>Income Tax</strong>
+                <small>Income Tax Calculator</small>
+              </span>
+            </span>
+          </a>
+          <a class="assignment-tab" href="arithmetic.html">
+            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+            <span class="tab-copy">
+              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
               <span>
                 <strong>Arithmetic</strong>
                 <small>Factorial | Sum | Average</small>
@@ -99,70 +99,94 @@
         </div>
         <div class="workspace-content">
           <header class="page-title">
-            <h1>Arithmetic</h1>
-            <p>Factorial | Sum | Average Calculator</p>
+            <h1>Income Tax Calculator</h1>
+            <p>Tax Table | Taxable Income</p>
           </header>
-          <p class="instruction">Calculate the factorial, sum, and average of the first N natural numbers.</p>
-          <div class="arithmetic-layout">
-            <section class="panel arithmetic-input">
+          <p class="instruction">Enter your taxable income to compute the income tax using the table below.</p>
+          <div class="tax-layout">
+            <section class="panel tax-table-panel">
               <header class="panel-header">
-                <strong>INPUT</strong>
+                <strong>INCOME TAX TABLE</strong>
               </header>
               <div class="panel-body">
-                <h2>Enter N (Natural Numbers)</h2>
-                <p>Enter N and select Calculate to see all three results.</p>
-                <div class="number-field">
-                  <input
-                    id="arithmetic-n-input"
-                    type="number"
-                    min="1"
-                    step="1"
-                    placeholder="Enter a value for N"
-                    aria-label="Natural number N"
-                  />
-                  <span>N</span>
+                <div class="tax-table" role="table" aria-label="Income tax brackets">
+                  <div class="tax-table-heading" role="row">
+                    <strong>Amount of Net Taxable Income</strong>
+                    <strong>Basic Tax + Rate</strong>
+                  </div>
+                  <div class="tax-column-labels" role="row">
+                    <span>Over</span>
+                    <span>But Not Over</span>
+                    <span></span>
+                  </div>
+                  <div class="tax-row" role="row">
+                    <span>—</span>
+                    <span>₱250,000</span>
+                    <span>0%</span>
+                  </div>
+                  <div class="tax-row" role="row">
+                    <span>₱250,000</span>
+                    <span>₱400,000</span>
+                    <span>20% of the excess over ₱250,000</span>
+                  </div>
+                  <div class="tax-row" role="row">
+                    <span>₱400,000</span>
+                    <span>₱800,000</span>
+                    <span>₱30,000 + 25% of the excess over ₱400,000</span>
+                  </div>
+                  <div class="tax-row" role="row">
+                    <span>₱800,000</span>
+                    <span>₱2,000,000</span>
+                    <span>₱130,000 + 30% of the excess over ₱800,000</span>
+                  </div>
+                  <div class="tax-row" role="row">
+                    <span>₱2,000,000</span>
+                    <span>₱8,000,000</span>
+                    <span>₱490,000 + 32% of the excess over ₱2,000,000</span>
+                  </div>
+                  <div class="tax-row" role="row">
+                    <span>₱8,000,000</span>
+                    <span>—</span>
+                    <span>₱2,410,000 + 35% of the excess over ₱8,000,000</span>
+                  </div>
                 </div>
-                <p id="arithmetic-help" class="input-help">
-                  Use a positive whole number (1, 2, 3, …).
-                </p>
-                <button id="arithmetic-calc-btn" class="primary-button" type="button">
-                  Calculate
-                </button>
-                <div class="how-it-works">
-                  <strong>HOW IT WORKS</strong>
-                  <p>Calculations use the numbers 1 through N.</p>
-                </div>
+                <p class="table-formula">Income Tax = Basic tax + Rate</p>
               </div>
             </section>
-            <section class="panel arithmetic-output">
-              <header class="panel-header">
-                <strong>ARITHMETIC OUTPUT</strong>
-                <span>RESULT</span>
-              </header>
-              <div class="panel-body">
-                <div class="arithmetic-row">
-                  <span>
-                    <strong>Factorial</strong>
-                    <small>N! = 1 × 2 × … × N</small>
-                  </span>
-                  <b id="res-factorial">—</b>
+            <div class="tax-side">
+              <section class="panel tax-input-card">
+                <header class="panel-header">
+                  <strong>01  /  ENTER TAXABLE INCOME</strong>
+                </header>
+                <div class="panel-body">
+                  <div class="currency-field">
+                    <span>₱</span>
+                    <input
+                      id="tax-income-input"
+                      type="number"
+                      min="0"
+                      placeholder="Enter taxable income"
+                      aria-label="Taxable income"
+                    />
+                  </div>
+                  <button id="compute-tax-btn" class="primary-button" type="button">
+                    Compute income tax
+                  </button>
                 </div>
-                <div class="arithmetic-row">
-                  <span>
-                    <strong>Sum</strong>
-                    <small>N × (N + 1) / 2</small>
-                  </span>
-                  <b id="res-sum">—</b>
+              </section>
+              <section class="panel tax-output-card">
+                <header class="panel-header">
+                  <strong>INCOME TAX OUTPUT</strong>
+                  <span>RESULT</span>
+                </header>
+                <div class="panel-body">
+                  <h2>Income tax due</h2>
+                  <strong id="tax-result" class="tax-result">₱ —</strong>
+                  <p id="tax-summary">Enter taxable income to see your result.</p>
+                  <small>Calculated using the income tax table.</small>
                 </div>
-                <div class="arithmetic-row">
-                  <span>
-                    <strong>Average</strong>
-                    <small>(N + 1) / 2</small>
-                  </span>
-                  <b id="res-average">—</b>
-                </div>
-              </div>
-            </section>
+              </section>
+            </div>
           </div>
         </div>
       </main>
@@ -191,50 +215,31 @@
     </script>
     <script>
       (function () {
-        const inputEl = document.getElementById("arithmetic-n-input");
-        const helpEl = document.getElementById("arithmetic-help");
-        const calcBtn = document.getElementById("arithmetic-calc-btn");
-        const resFactorial = document.getElementById("res-factorial");
-        const resSum = document.getElementById("res-sum");
-        const resAverage = document.getElementById("res-average");
+        const money = new Intl.NumberFormat("en-PH", {
+          style: "currency",
+          currency: "PHP",
+          minimumFractionDigits: 2,
+        });
 
-        calcBtn.addEventListener("click", () => {
-          const n = Number(inputEl.value);
-          if (!Number.isInteger(n) || n < 1 || n > 170) {
-            helpEl.textContent = "Enter a whole number from 1 to 170.";
-            helpEl.classList.add("error");
-            resFactorial.textContent = "—";
-            resSum.textContent = "—";
-            resAverage.textContent = "—";
-            return;
-          }
+        function calculateTax(income) {
+          if (income <= 250000) return 0;
+          if (income <= 400000) return (income - 250000) * 0.2;
+          if (income <= 800000) return 30000 + (income - 400000) * 0.25;
+          if (income <= 2000000) return 130000 + (income - 800000) * 0.3;
+          if (income <= 8000000) return 490000 + (income - 2000000) * 0.32;
+          return 2410000 + (income - 8000000) * 0.35;
+        }
 
-          let factorial = 1;
-          let factor = 1;
-          while (factor <= n) {
-            factorial *= factor;
-            factor += 1;
-          }
+        const inputEl = document.getElementById("tax-income-input");
+        const computeBtn = document.getElementById("compute-tax-btn");
+        const resultEl = document.getElementById("tax-result");
+        const summaryEl = document.getElementById("tax-summary");
 
-          let sum = 0;
-          let addend = 1;
-          do {
-            sum += addend;
-            addend += 1;
-          } while (addend <= n);
-
-          let total = 0;
-          for (let number = 1; number <= n; number += 1) {
-            total += number;
-          }
-
-          const average = total / n;
-
-          helpEl.textContent = "Use a positive whole number (1, 2, 3, …).";
-          helpEl.classList.remove("error");
-          resFactorial.textContent = factorial.toLocaleString("en-US");
-          resSum.textContent = sum.toLocaleString("en-US");
-          resAverage.textContent = average.toLocaleString("en-US");
+        computeBtn.addEventListener("click", () => {
+          const val = Math.max(0, Number(inputEl.value) || 0);
+          const tax = calculateTax(val);
+          resultEl.textContent = money.format(tax);
+          summaryEl.textContent = `Tax due on ${money.format(val)} taxable income.`;
         });
       })();
     </script>
