@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="186.201" height="65" viewBox="0 0 186.201 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="Assignment 3 tab" d="M0.5 64.5V15.5C0.5 5.5 5.5 0.5 15.5 0.5H163.5L185.5 64.5H0.5Z" fill="url(#paint0_linear_0_7)" stroke="#D1DAEA"/>
+<defs>
+<linearGradient id="paint0_linear_0_7" x1="93" y1="0.5" x2="93" y2="64.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#EEF1F7"/>
+<stop offset="1" stop-color="#DFE4EF"/>
+</linearGradient>
+</defs>
+</svg>

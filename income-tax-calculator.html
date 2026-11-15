@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Philippine annual income tax calculator" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <title>Income Tax Calculator | CS 1130</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      if (localStorage.getItem("cs1130-theme") === "dark") {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="app-frame">
+      <header class="top-navigation">
+        <a href="index.html" class="logo-link" aria-label="Return to Home Page" title="Return to Home Page">
+          <img
+          id="ateneo-logo"
+          class="ateneo-logo"
+          src="assets/a1c12.png"
+          alt="Ateneo de Davao University"
+        />
+        </a>
+        <nav class="assignment-tabs" aria-label="Assignments">
+          <a class="assignment-tab" href="unit-conversion.html">
+            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+            <span class="tab-copy">
+              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
+              <span>
+                <strong>Unit Conversion</strong>
+                <small>Basic Conversion Calculator</small>
+              </span>
+            </span>
+          </a>
+          <a class="assignment-tab active" href="income-tax-calculator.html" aria-current="page">
+            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+            <span class="tab-copy">
+              <img class="folder-icon light-folder" src="assets/15833.svg" alt="" />
+              <img class="folder-icon dark-folder" src="assets/412c1.svg" alt="" />
+              <span>
+                <strong>Income Tax</strong>
+                <small>Income Tax Calculator</small>
+              </span>
+            </span>
+          </a>
+          <a class="assignment-tab" href="arithmetic.html">
+            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+            <span class="tab-copy">
+              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
+              <span>
+                <strong>Arithmetic</strong>
+                <small>Factorial | Sum | Average</small>
+              </span>
+            </span>
+          </a>
+          <a class="assignment-tab" href="simple-payroll.html">
+            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+            <span class="tab-copy">
+              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
+              <span>
+                <strong>Simple Payroll</strong>
+                <small>Payroll Calculator</small>
+              </span>
+            </span>
+          </a>
+        </nav>
+        <button
+          id="theme-button"
+          class="theme-button"
+          type="button"
+          aria-label="Switch to dark mode"
+        >
+          <img id="theme-icon" src="assets/b1186.svg" alt="" />
+        </button>
+      </header>
+      <main class="workspace">
+        <div class="window-dots" aria-hidden="true">
+          <img src="assets/c9fa6.svg" alt="" />
+          <img src="assets/9e541.svg" alt="" />
+          <img src="assets/86e71.svg" alt="" />
+        </div>
+        <div class="workspace-content">
+          <header class="page-title">
+            <h1>Income Tax Calculator</h1>
+            <p>Tax Table | Taxable Income</p>
+          </header>
+          <p class="instruction">Enter your taxable income to compute the income tax using the table below.</p>
+          <div class="tax-layout">
+            <section class="panel tax-table-panel">
+              <header class="panel-header">
+                <strong>INCOME TAX TABLE</strong>
+              </header>
+              <div class="panel-body">
+                <div class="tax-table" role="table" aria-label="Income tax brackets">
+                  <div class="tax-table-heading" role="row">
+                    <strong>Amount of Net Taxable Income</strong>
+                    <strong>Basic Tax + Rate</strong>
+                  </div>
+                  <div class="tax-column-labels" role="row">
+                    <span>Over</span>
+                    <span>But Not Over</span>
+                    <span></span>
+                  </div>
+                  <div class="tax-row" role="row">
+                    <span>—</span>
+                    <span>₱250,000</span>
+                    <span>0%</span>
+                  </div>
+                  <div class="tax-row" role="row">
+                    <span>₱250,000</span>
+                    <span>₱400,000</span>
+                    <span>20% of the excess over ₱250,000</span>
+                  </div>
+                  <div class="tax-row" role="row">
+                    <span>₱400,000</span>
+                    <span>₱800,000</span>
+                    <span>₱30,000 + 25% of the excess over ₱400,000</span>
+                  </div>
+                  <div class="tax-row" role="row">
+                    <span>₱800,000</span>
+                    <span>₱2,000,000</span>
+                    <span>₱130,000 + 30% of the excess over ₱800,000</span>
+                  </div>
+                  <div class="tax-row" role="row">
+                    <span>₱2,000,000</span>
+                    <span>₱8,000,000</span>
+                    <span>₱490,000 + 32% of the excess over ₱2,000,000</span>
+                  </div>
+                  <div class="tax-row" role="row">
+                    <span>₱8,000,000</span>
+                    <span>—</span>
+                    <span>₱2,410,000 + 35% of the excess over ₱8,000,000</span>
+                  </div>
+                </div>
+                <p class="table-formula">Income Tax = Basic tax + Rate</p>
+              </div>
+            </section>
+            <div class="tax-side">
+              <section class="panel tax-input-card">
+                <header class="panel-header">
+                  <strong>01  /  ENTER TAXABLE INCOME</strong>
+                </header>
+                <div class="panel-body">
+                  <div class="currency-field">
+                    <span>₱</span>
+                    <input
+                      id="tax-income-input"
+                      type="number"
+                      min="0"
+                      placeholder="Enter taxable income"
+                      aria-label="Taxable income"
+                    />
+                  </div>
+                  <button id="compute-tax-btn" class="primary-button" type="button">
+                    Compute income tax
+                  </button>
+                </div>
+              </section>
+              <section class="panel tax-output-card">
+                <header class="panel-header">
+                  <strong>INCOME TAX OUTPUT</strong>
+                  <span>RESULT</span>
+                </header>
+                <div class="panel-body">
+                  <h2>Income tax due</h2>
+                  <strong id="tax-result" class="tax-result">₱ —</strong>
+                  <p id="tax-summary">Enter taxable income to see your result.</p>
+                  <small>Calculated using the income tax table.</small>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script>
+      (function () {
+        const logo = document.getElementById("ateneo-logo");
+        const btn = document.getElementById("theme-button");
+        const icon = document.getElementById("theme-icon");
+
+        function applyTheme(isDark) {
+          document.documentElement.dataset.theme = isDark ? "dark" : "light";
+          localStorage.setItem("cs1130-theme", isDark ? "dark" : "light");
+          logo.src = isDark ? "assets/cee41.png" : "assets/a1c12.png";
+          icon.src = isDark ? "assets/c409f.svg" : "assets/b1186.svg";
+          btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+        }
+
+        applyTheme(localStorage.getItem("cs1130-theme") === "dark");
+
+        btn.addEventListener("click", function () {
+          const isDark = document.documentElement.dataset.theme === "dark";
+          applyTheme(!isDark);
+        });
+      })();
+    </script>
+    <script>
+    <!-- Income Tax Calculator Script -->

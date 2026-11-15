@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Factorial, sum, and average of the first N natural numbers" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <title>Arithmetic | CS 1130</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      if (localStorage.getItem("cs1130-theme") === "dark") {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="app-frame">
+      <header class="top-navigation">
+        <a href="index.html" class="logo-link" aria-label="Return to Home Page" title="Return to Home Page">
+          <img
+          id="ateneo-logo"
+          class="ateneo-logo"
+          src="assets/a1c12.png"
+          alt="Ateneo de Davao University"
+        />
+        </a>
+        <nav class="assignment-tabs" aria-label="Assignments">
+          <a class="assignment-tab" href="unit-conversion.html">
+            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+            <span class="tab-copy">
+              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
+              <span>
+                <strong>Unit Conversion</strong>
+                <small>Basic Conversion Calculator</small>
+              </span>
+            </span>
+          </a>
+          <a class="assignment-tab" href="income-tax-calculator.html">
+            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+            <span class="tab-copy">
+              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
+              <span>
+                <strong>Income Tax</strong>
+                <small>Income Tax Calculator</small>
+              </span>
+            </span>
+          </a>
+          <a class="assignment-tab active" href="arithmetic.html" aria-current="page">
+            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+            <span class="tab-copy">
+              <img class="folder-icon light-folder" src="assets/15833.svg" alt="" />
+              <img class="folder-icon dark-folder" src="assets/412c1.svg" alt="" />
+              <span>
+                <strong>Arithmetic</strong>
+                <small>Factorial | Sum | Average</small>
+              </span>
+            </span>
+          </a>
+          <a class="assignment-tab" href="simple-payroll.html">
+            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+            <span class="tab-copy">
+              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
+              <span>
+                <strong>Simple Payroll</strong>
+                <small>Payroll Calculator</small>
+              </span>
+            </span>
+          </a>
+        </nav>
+        <button
+          id="theme-button"
+          class="theme-button"
+          type="button"
+          aria-label="Switch to dark mode"
+        >
+          <img id="theme-icon" src="assets/b1186.svg" alt="" />
+        </button>
+      </header>
+      <main class="workspace">
+        <div class="window-dots" aria-hidden="true">
+          <img src="assets/c9fa6.svg" alt="" />
+          <img src="assets/9e541.svg" alt="" />
+          <img src="assets/86e71.svg" alt="" />
+        </div>
+        <div class="workspace-content">
+          <header class="page-title">
+            <h1>Arithmetic</h1>
+            <p>Factorial | Sum | Average Calculator</p>
+          </header>
+          <p class="instruction">Calculate the factorial, sum, and average of the first N natural numbers.</p>
+          <div class="arithmetic-layout">
+            <section class="panel arithmetic-input">
+              <header class="panel-header">
+                <strong>INPUT</strong>
+              </header>
+              <div class="panel-body">
+                <h2>Enter N (Natural Numbers)</h2>
+                <p>Enter N and select Calculate to see all three results.</p>
+                <div class="number-field">
+                  <input
+                    id="arithmetic-n-input"
+                    type="number"
+                    min="1"
+                    step="1"
+                    placeholder="Enter a value for N"
+                    aria-label="Natural number N"
+                  />
+                  <span>N</span>
+                </div>
+                <p id="arithmetic-help" class="input-help">
+                  Use a positive whole number (1, 2, 3, …).
+                </p>
+                <button id="arithmetic-calc-btn" class="primary-button" type="button">
+                  Calculate
+                </button>
+                <div class="how-it-works">
+                  <strong>HOW IT WORKS</strong>
+                  <p>Calculations use the numbers 1 through N.</p>
+                </div>
+              </div>
+            </section>
+            <section class="panel arithmetic-output">
+              <header class="panel-header">
+                <strong>ARITHMETIC OUTPUT</strong>
+                <span>RESULT</span>
+              </header>
+              <div class="panel-body">
+                <div class="arithmetic-row">
+                  <span>
+                    <strong>Factorial</strong>
+                    <small>N! = 1 × 2 × … × N</small>
+                  </span>
+                  <b id="res-factorial">—</b>
+                </div>
+                <div class="arithmetic-row">
+                  <span>
+                    <strong>Sum</strong>
+                    <small>N × (N + 1) / 2</small>
+                  </span>
+                  <b id="res-sum">—</b>
+                </div>
+                <div class="arithmetic-row">
+                  <span>
+                    <strong>Average</strong>
+                    <small>(N + 1) / 2</small>
+                  </span>
+                  <b id="res-average">—</b>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script>
+      (function () {
+        const logo = document.getElementById("ateneo-logo");
+        const btn = document.getElementById("theme-button");
+        const icon = document.getElementById("theme-icon");
+
+        function applyTheme(isDark) {
+          document.documentElement.dataset.theme = isDark ? "dark" : "light";
+          localStorage.setItem("cs1130-theme", isDark ? "dark" : "light");
+          logo.src = isDark ? "assets/cee41.png" : "assets/a1c12.png";
+          icon.src = isDark ? "assets/c409f.svg" : "assets/b1186.svg";
+          btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+        }
+
+        applyTheme(localStorage.getItem("cs1130-theme") === "dark");
+
+        btn.addEventListener("click", function () {
+          const isDark = document.documentElement.dataset.theme === "dark";
+          applyTheme(!isDark);
+        });
+      })();
+    </script>
+    <script>
+    <!-- Arithmetic Calculator Script -->

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Temperature and length unit conversion calculator" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <title>Unit Conversion | CS 1130</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      if (localStorage.getItem("cs1130-theme") === "dark") {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="app-frame">
+      <header class="top-navigation">
+        <a href="index.html" class="logo-link" aria-label="Return to Home Page" title="Return to Home Page">
+          <img
+          id="ateneo-logo"
+          class="ateneo-logo"
+          src="assets/a1c12.png"
+          alt="Ateneo de Davao University"
+        />
+        </a>
+        <nav class="assignment-tabs" aria-label="Assignments">
+          <a class="assignment-tab active" href="unit-conversion.html" aria-current="page">
+            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+            <span class="tab-copy">
+              <img class="folder-icon light-folder" src="assets/15833.svg" alt="" />
+              <img class="folder-icon dark-folder" src="assets/412c1.svg" alt="" />
+              <span>
+                <strong>Unit Conversion</strong>
+                <small>Basic Conversion Calculator</small>
+              </span>
+            </span>
+          </a>
+          <a class="assignment-tab" href="income-tax-calculator.html">
+            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+            <span class="tab-copy">
+              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
+              <span>
+                <strong>Income Tax</strong>
+                <small>Income Tax Calculator</small>
+              </span>
+            </span>
+          </a>
+          <a class="assignment-tab" href="arithmetic.html">
+            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+            <span class="tab-copy">
+              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
+              <span>
+                <strong>Arithmetic</strong>
+                <small>Factorial | Sum | Average</small>
+              </span>
+            </span>
+          </a>
+          <a class="assignment-tab" href="simple-payroll.html">
+            <img class="tab-shape light-active" src="assets/8b995.svg" alt="" />
+            <img class="tab-shape light-inactive" src="assets/d2b93.svg" alt="" />
+            <img class="tab-shape dark-active" src="assets/47702.svg" alt="" />
+            <img class="tab-shape dark-inactive" src="assets/4b747.svg" alt="" />
+            <span class="tab-copy">
+              <img class="folder-icon light-folder" src="assets/92afd.svg" alt="" />
+              <img class="folder-icon dark-folder" src="assets/79f76.svg" alt="" />
+              <span>
+                <strong>Simple Payroll</strong>
+                <small>Payroll Calculator</small>
+              </span>
+            </span>
+          </a>
+        </nav>
+        <button
+          id="theme-button"
+          class="theme-button"
+          type="button"
+          aria-label="Switch to dark mode"
+        >
+          <img id="theme-icon" src="assets/b1186.svg" alt="" />
+        </button>
+      </header>
+      <main class="workspace">
+        <div class="window-dots" aria-hidden="true">
+          <img src="assets/c9fa6.svg" alt="" />
+          <img src="assets/9e541.svg" alt="" />
+          <img src="assets/86e71.svg" alt="" />
+        </div>
+        <div class="workspace-content">
+          <header class="page-title">
+            <h1>Unit Conversion</h1>
+            <p>Metric to Imperial | Imperial to Metric Converter</p>
+          </header>
+          <p class="instruction">Select a unit, enter a value, and see the conversion.</p>
+          <div class="conversion-layout">
+            <section class="panel conversion-controls">
+              <header class="panel-header">
+                <strong>01  /  CHOOSE YOUR UNIT</strong>
+              </header>
+              <div class="panel-body">
+                <h2>What would you like to convert?</h2>
+                <div class="unit-column-labels">
+                  <span>Metric</span>
+                  <span>Imperial</span>
+                </div>
+                <div class="unit-options">
+                  <button class="unit-option selected" type="button" data-unit="celsius">
+                    <span>Celsius</span>
+                    <strong>°C</strong>
+                  </button>
+                  <button class="unit-option" type="button" data-unit="fahrenheit">
+                    <span>Fahrenheit</span>
+                    <strong>°F</strong>
+                  </button>
+                  <button class="unit-option" type="button" data-unit="meters">
+                    <span>Meters</span>
+                    <strong>m</strong>
+                  </button>
+                  <button class="unit-option" type="button" data-unit="feet">
+                    <span>Feet</span>
+                    <strong>ft</strong>
+                  </button>
+                </div>
+                <label class="section-label" for="conversion-value">
+                  02&nbsp; / &nbsp;ENTER A VALUE
+                </label>
+                <div class="number-field">
+                  <input
+                    id="conversion-value"
+                    type="number"
+                    value=""
+                    aria-label="Value in °C"
+                  />
+                  <span id="input-unit-badge">°C</span>
+                </div>
+                <div class="conversion-action">
+                  <p id="converting-label">Converting Celsius to Fahrenheit</p>
+                  <button id="convert-btn" class="primary-button" type="button">
+                    Convert
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel conversion-output">
+              <header class="panel-header">
+                <strong>CONVERSION OUTPUT</strong>
+                <span>RESULT</span>
+              </header>
+              <div class="panel-body">
+                <h2 id="output-title">Celsius to Fahrenheit</h2>
+                <p id="equals-copy" class="equals-copy">0 °C equals</p>
+                <div class="large-result">
+                  <strong id="output-number">32</strong>
+                  <span id="output-unit">°F</span>
+                </div>
+                <p id="output-name" class="result-name">Fahrenheit</p>
+                <div class="formula">
+                  <span>THE FORMULA</span>
+                  <strong id="formula-text">(0 × 9/5) + 32 = 32 °F</strong>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script>
+      (function () {
+        const logo = document.getElementById("ateneo-logo");
+        const btn = document.getElementById("theme-button");
+        const icon = document.getElementById("theme-icon");
+
+        function applyTheme(isDark) {
+          document.documentElement.dataset.theme = isDark ? "dark" : "light";
+          localStorage.setItem("cs1130-theme", isDark ? "dark" : "light");
+          logo.src = isDark ? "assets/cee41.png" : "assets/a1c12.png";
+          icon.src = isDark ? "assets/c409f.svg" : "assets/b1186.svg";
+          btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+        }
+
+        applyTheme(localStorage.getItem("cs1130-theme") === "dark");
+
+        btn.addEventListener("click", function () {
+          const isDark = document.documentElement.dataset.theme === "dark";
+          applyTheme(!isDark);
+        });
+      })();
+    </script>
+    <script>
+      <!-- Unit Conversion Script --> 
+
+      
