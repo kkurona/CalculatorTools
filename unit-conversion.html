@@ -139,7 +139,7 @@
                   <input
                     id="conversion-value"
                     type="number"
-                    value=""
+                    value="25"
                     aria-label="Value in °C"
                   />
                   <span id="input-unit-badge">°C</span>
@@ -160,15 +160,15 @@
               </header>
               <div class="panel-body">
                 <h2 id="output-title">Celsius to Fahrenheit</h2>
-                <p id="equals-copy" class="equals-copy">0 °C equals</p>
+                <p id="equals-copy" class="equals-copy">25 °C equals</p>
                 <div class="large-result">
-                  <strong id="output-number">32</strong>
+                  <strong id="output-number">77</strong>
                   <span id="output-unit">°F</span>
                 </div>
                 <p id="output-name" class="result-name">Fahrenheit</p>
                 <div class="formula">
                   <span>THE FORMULA</span>
-                  <strong id="formula-text">(0 × 9/5) + 32 = 32 °F</strong>
+                  <strong id="formula-text">(25 × 9/5) + 32 = 77 °F</strong>
                 </div>
               </div>
             </section>
@@ -199,6 +199,85 @@
       })();
     </script>
     <script>
-      <!-- Unit Conversion Script --> 
+      (function () {
+        const conversions = {
+          celsius: {
+            label: "Celsius to Fahrenheit",
+            inputUnit: "°C",
+            outputUnit: "°F",
+            outputName: "Fahrenheit",
+            convert: (v) => v * (9 / 5) + 32,
+            formula: (inp, out) => `(${inp} × 9/5) + 32 = ${out} °F`,
+          },
+          fahrenheit: {
+            label: "Fahrenheit to Celsius",
+            inputUnit: "°F",
+            outputUnit: "°C",
+            outputName: "Celsius",
+            convert: (v) => (v - 32) * (5 / 9),
+            formula: (inp, out) => `(${inp} − 32) × 5/9 = ${out} °C`,
+          },
+          meters: {
+            label: "Meters to Feet",
+            inputUnit: "m",
+            outputUnit: "ft",
+            outputName: "Feet",
+            convert: (v) => v * 3.28084,
+            formula: (inp, out) => `${inp} × 3.28084 = ${out} ft`,
+          },
+          feet: {
+            label: "Feet to Meters",
+            inputUnit: "ft",
+            outputUnit: "m",
+            outputName: "Meters",
+            convert: (v) => v / 3.28084,
+            formula: (inp, out) => `${inp} ÷ 3.28084 = ${out} m`,
+          },
+        };
 
-      
+        let selected = "celsius";
+        const unitButtons = document.querySelectorAll(".unit-option");
+        const inputEl = document.getElementById("conversion-value");
+        const inputUnitBadge = document.getElementById("input-unit-badge");
+        const convertingLabel = document.getElementById("converting-label");
+        const convertBtn = document.getElementById("convert-btn");
+
+        const outputTitle = document.getElementById("output-title");
+        const equalsCopy = document.getElementById("equals-copy");
+        const outputNumber = document.getElementById("output-number");
+        const outputUnit = document.getElementById("output-unit");
+        const outputName = document.getElementById("output-name");
+        const formulaText = document.getElementById("formula-text");
+
+        function cleanNumber(value) {
+          return Number.isInteger(value) ? String(value) : value.toFixed(2).replace(/\.?0+$/, "");
+        }
+
+        unitButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            selected = btn.dataset.unit;
+            unitButtons.forEach((b) => b.classList.toggle("selected", b === btn));
+            const conv = conversions[selected];
+            inputEl.setAttribute("aria-label", `Value in ${conv.inputUnit}`);
+            inputUnitBadge.textContent = conv.inputUnit;
+            convertingLabel.textContent = `Converting ${conv.label}`;
+          });
+        });
+
+        convertBtn.addEventListener("click", () => {
+          const rawInput = inputEl.value || "0";
+          const numericInput = Number(rawInput);
+          const conv = conversions[selected];
+          const output = cleanNumber(conv.convert(Number.isFinite(numericInput) ? numericInput : 0));
+
+          outputTitle.textContent = conv.label;
+          equalsCopy.textContent = `${rawInput} ${conv.inputUnit} equals`;
+          outputNumber.textContent = output;
+          outputUnit.textContent = conv.outputUnit;
+          outputName.textContent = conv.outputName;
+          formulaText.textContent = conv.formula(rawInput, output);
+        });
+      })();
+    </script>
+  </body>
+</html>
